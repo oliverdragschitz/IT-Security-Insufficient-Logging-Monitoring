@@ -10,6 +10,9 @@ const userTable = new UserTableService();
 router.post('/', (req: Request, res: Response) => {
       let user : UserRecord = req.body;
 
+      const ip = req.ip;
+      logger.info(ip, "Request to register " + user.name);
+
       userTable.RegisterUser(user)
       .then((user) => {
 
